@@ -9,9 +9,23 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <TextBox x:Name="txtProfile" HorizontalAlignment="Center" Margin="0,35,0,0" Text="TextBox" VerticalAlignment="Top" Width="210" IsReadOnly="True"/>
-        <Button x:Name="btStartStop" Content="Start" HorizontalAlignment="Center" Margin="0,103,0,0" VerticalAlignment="Top" Click="BtStartStop_Click"/>
-        <TextBlock x:Name="txtStatus" HorizontalAlignment="Center" Margin="0,158,0,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <Grid HorizontalAlignment="Center" Margin="0,50,0,0" VerticalAlignment="Top">
+            <TextBlock Text="SSID" VerticalAlignment="Center"/>
+            <TextBox x:Name="txtSSID" Text="MyWiFiAP" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250" Margin="60,0,0,0"/>
+        </Grid>
+        <StackPanel>
+            <Grid HorizontalAlignment="Center" Margin="0,100,0,0" VerticalAlignment="Top">
+                <TextBlock Text="Passwd" VerticalAlignment="Center"/>
+                <PasswordBox x:Name="txtPass" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250" Margin="60,0,0,0" PasswordChanged="TxtPass_PasswordChanged"/>
+            </Grid>
+            <TextBlock x:Name="txtPassErr" HorizontalAlignment="Center"/>
+        </StackPanel>
+        <Grid HorizontalAlignment="Center" Margin="0,200,0,0" VerticalAlignment="Top">
+            <TextBlock Text="Via" VerticalAlignment="Center"/>
+            <TextBox x:Name="txtWAN" IsReadOnly="True" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250" Margin="60,0,0,0"/>
+        </Grid>
+        <Button x:Name="btnStartStop" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,250,0,0" Click="BtnStartStop_Click" Content="Start"/>
+        <TextBlock x:Name="txtStatus" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,300,0,0" Width="300"/>
 
     </Grid>
 </Page>

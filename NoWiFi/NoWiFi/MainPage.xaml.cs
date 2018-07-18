@@ -24,32 +24,61 @@ namespace NoWiFi
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        private const int MAX_WPA2_PASSWORD_LENGTH = 63;
+        private const int MIN_WPA2_PASSWORD_LENGTH = 8;
+
         private ConnectionProfile conProfile;
-        private bool fStarted;
         private static NetworkOperatorTetheringManager tetheringManager;
 
         public MainPage()
         {
             this.InitializeComponent();
 
-            conProfile = NetworkInformation.GetInternetConnectionProfile();
+            Setup_Tethering();
 
-            txtProfile.Text = conProfile.ProfileName;
-
-            fStarted = false;
+            if (tetheringManager.TetheringOperationalState == TetheringOperationalState.On) 
+//                || (conProfile.ProfileName == "WFD_GROUP_OWNER_PROFILE"))
+            {
+                txtStatus.Text = "Started!";
+                btnStartStop.Content = "Stop";
+            }
+            else
+            {
+                txtStatus.Text = "Stopped!";
+                btnStartStop.Content = "Start";
+            }
         }
 
-        private async void BtStartStop_Click(object sender, RoutedEventArgs e)
+        private async void BtnStartStop_Click(object sender, RoutedEventArgs e)
         {
-            if (!fStarted)
+            if (tetheringManager.TetheringOperationalState == TetheringOperationalState.Off)
             {
-                tetheringManager = NetworkOperatorTetheringManager.CreateFromConnectionProfile(conProfile);
+                bool fNewConfig = false;
+                NetworkOperatorTetheringAccessPointConfiguration apConfig =
+                tetheringManager.GetCurrentAccessPointConfiguration();
+
+                if (txtSSID.Text != apConfig.Ssid)
+                {
+                    apConfig.Ssid = txtSSID.Text;
+                    fNewConfig = true;
+                }
+
+                if (txtPass.Password != apConfig.Passphrase)
+                {
+                    apConfig.Passphrase = txtPass.Password;
+                    fNewConfig = true;
+                }
+
+                if (fNewConfig)
+                {
+                    await tetheringManager.ConfigureAccessPointAsync(apConfig);
+                }
+
                 var result = await tetheringManager.StartTetheringAsync();
                 if (result.Status == TetheringOperationStatus.Success)
                 {
-                    fStarted = true;
                     txtStatus.Text = "Started!";
-                    btStartStop.Content = "Stop";
+                    btnStartStop.Content = "Stop";
                 }
                 else
                 {
@@ -61,14 +90,42 @@ namespace NoWiFi
                 if (result.Status == TetheringOperationStatus.Success)
                 {
                     txtStatus.Text = "Stopped!";
-                    btStartStop.Content = "Start";
-                    fStarted = false;
+                    btnStartStop.Content = "Start";
+                    Setup_Tethering();
                 }
                 else
                 {
                     txtStatus.Text = "Can't stop!";
                 }
             }
+        }
+
+        private void TxtPass_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (txtPass.Password.Length < MIN_WPA2_PASSWORD_LENGTH)
+            {
+                txtPassErr.Text = "Password too short!";
+            }
+            else if (txtPass.Password.Length > MAX_WPA2_PASSWORD_LENGTH)
+            {
+                txtPassErr.Text = "Password too long!";
+            }
+            else
+            {
+                txtPassErr.Text = "";
+            }
+        }
+
+        private bool Setup_Tethering()
+        {
+            conProfile = NetworkInformation.GetInternetConnectionProfile();
+            txtWAN.Text = conProfile.ProfileName;
+            tetheringManager = NetworkOperatorTetheringManager.CreateFromConnectionProfile(conProfile);
+            NetworkOperatorTetheringAccessPointConfiguration apConfig = 
+                tetheringManager.GetCurrentAccessPointConfiguration();
+            txtSSID.Text = apConfig.Ssid;
+            txtPass.Password = apConfig.Passphrase;
+            return true;
         }
     }
 }
