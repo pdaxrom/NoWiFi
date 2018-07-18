@@ -30,27 +30,61 @@ namespace NoWiFi
         private ConnectionProfile conProfile;
         private static NetworkOperatorTetheringManager tetheringManager;
 
+        private DispatcherTimer _timer;
+
         public MainPage()
         {
             this.InitializeComponent();
+        }
 
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
             Setup_Tethering();
 
-            if (tetheringManager.TetheringOperationalState == TetheringOperationalState.On) 
-//                || (conProfile.ProfileName == "WFD_GROUP_OWNER_PROFILE"))
+            _timer = new DispatcherTimer();
+            _timer.Interval = TimeSpan.FromSeconds(1);
+            _timer.Tick += (_1, _2) =>
             {
-                txtStatus.Text = "Started!";
-                btnStartStop.Content = "Stop";
-            }
-            else
+                UpdateTetheringStatus();
+            };
+            _timer.Start();
+        }
+
+        private void ConfGui_Enable(bool val)
+        {
+            txtSSID.IsEnabled = val;
+            txtPass.IsEnabled = val;
+        }
+
+        private void UpdateTetheringStatus()
+        {
+            switch (tetheringManager.TetheringOperationalState)
             {
-                txtStatus.Text = "Stopped!";
-                btnStartStop.Content = "Start";
+                case TetheringOperationalState.InTransition:
+                    txtStatus.Text = "Operation in progress...";
+                    break;
+                case TetheringOperationalState.Off:
+                    ConfGui_Enable(true);
+                    txtStatus.Text = "Stopped!";
+                    btnStartStop.IsEnabled = true;
+                    btnStartStop.Content = "Start";
+                    break;
+                case TetheringOperationalState.On:
+                    ConfGui_Enable(false);
+                    txtStatus.Text = "Started!";
+                    btnStartStop.IsEnabled = true;
+                    btnStartStop.Content = "Stop";
+                    break;
+                case TetheringOperationalState.Unknown:
+                    txtStatus.Text = "Unknown operation state...";
+                    break;
             }
         }
 
         private async void BtnStartStop_Click(object sender, RoutedEventArgs e)
         {
+            btnStartStop.IsEnabled = false;
+
             if (tetheringManager.TetheringOperationalState == TetheringOperationalState.Off)
             {
                 bool fNewConfig = false;
@@ -75,22 +109,15 @@ namespace NoWiFi
                 }
 
                 var result = await tetheringManager.StartTetheringAsync();
-                if (result.Status == TetheringOperationStatus.Success)
-                {
-                    txtStatus.Text = "Started!";
-                    btnStartStop.Content = "Stop";
-                }
-                else
+                if (result.Status != TetheringOperationStatus.Success)
                 {
                     txtStatus.Text = "Can't start!";
                 }
-            } else
+            } else if (tetheringManager.TetheringOperationalState == TetheringOperationalState.On)
             {
                 var result = await tetheringManager.StopTetheringAsync();
                 if (result.Status == TetheringOperationStatus.Success)
                 {
-                    txtStatus.Text = "Stopped!";
-                    btnStartStop.Content = "Start";
                     Setup_Tethering();
                 }
                 else
