@@ -37,7 +37,7 @@ namespace NoWiFi
             this.InitializeComponent();
         }
 
-        private async void Page_LoadedAsync(object sender, RoutedEventArgs e)
+        private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
             Setup_Tethering();
 
