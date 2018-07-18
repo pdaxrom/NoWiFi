@@ -37,7 +37,7 @@ namespace NoWiFi
             this.InitializeComponent();
         }
 
-        private void Page_Loaded(object sender, RoutedEventArgs e)
+        private async void Page_LoadedAsync(object sender, RoutedEventArgs e)
         {
             Setup_Tethering();
 
@@ -48,6 +48,21 @@ namespace NoWiFi
                 UpdateTetheringStatus();
             };
             _timer.Start();
+
+            if (ckAutoConn.IsChecked.Value)
+            {
+                if (tetheringManager.TetheringOperationalState == TetheringOperationalState.Off)
+                {
+                    var result = await tetheringManager.StartTetheringAsync();
+                    if (result.Status == TetheringOperationStatus.Success)
+                    {
+                        if (ckCloseApp.IsChecked.Value)
+                        {
+                            Application.Current.Exit();
+                        }
+                    }
+                }
+            }
         }
 
         private void ConfGui_Enable(bool val)
