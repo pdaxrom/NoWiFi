@@ -49,9 +49,19 @@
         <ToggleSwitch x:Name="tgSwitch" VerticalAlignment="Center" Grid.Row="6" Grid.Column="1" IsEnabled="False" Toggled="TgSwitch_Toggled"/>
         <!--        <TextBlock x:Name="txtStatus"/> -->
     </Grid>
-        <ListBox x:Name="lsClients" Grid.Column="1"
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>
+        <ListBox x:Name="lsClients"
           ScrollViewer.HorizontalScrollMode="Enabled"
           ScrollViewer.HorizontalScrollBarVisibility="Visible"
-          ScrollViewer.IsHorizontalRailEnabled="True"/>
+          ScrollViewer.IsHorizontalRailEnabled="True"
+          ScrollViewer.VerticalScrollMode="Enabled"
+          ScrollViewer.VerticalScrollBarVisibility="Visible"
+          ScrollViewer.IsVerticalRailEnabled="True"/>
+        <HyperlinkButton BorderThickness="2" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right" Content="nowifi.pdaXrom.org" NavigateUri="http://nowifi.pdaXrom.org"/>
+        </Grid>
     </Grid>
 </Page>
