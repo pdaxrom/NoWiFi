@@ -8,29 +8,30 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     Loaded="Page_Loaded">
-    
     <Grid>
-        <Grid HorizontalAlignment="Center" Margin="0,50,0,0" VerticalAlignment="Top">
-            <TextBlock x:Uid="SSID" VerticalAlignment="Center"/>
-            <TextBox x:Name="txtSSID" Text="MyWiFiAP" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250" Margin="60,0,0,0" IsEnabled="False"/>
-        </Grid>
-        <StackPanel>
-            <Grid HorizontalAlignment="Center" Margin="0,100,0,0" VerticalAlignment="Top">
-                <TextBlock x:Uid="Password" VerticalAlignment="Center"/>
-                <PasswordBox x:Name="txtPass" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250" Margin="60,0,0,0" PasswordChanged="TxtPass_PasswordChanged" IsEnabled="False"/>
-            </Grid>
-            <TextBlock x:Name="txtPassErr" HorizontalAlignment="Center"/>
-        </StackPanel>
-        <Grid HorizontalAlignment="Center" Margin="0,166,0,0" VerticalAlignment="Top">
-            <TextBlock x:Uid="Via" VerticalAlignment="Center"/>
-            <TextBox x:Name="txtWAN" IsReadOnly="True" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250" Margin="60,0,0,0"/>
-        </Grid>
-        <Grid HorizontalAlignment="Center" Margin="0,200,0,0" VerticalAlignment="Top">
-            <CheckBox x:Name="ckAutoConn" x:Uid="AutoConn" HorizontalAlignment="Left" Margin="62,0,0,0" VerticalAlignment="Top" IsChecked="{x:Bind local:Settings.Instance.AutoConn, Mode=TwoWay}"/>
-            <CheckBox x:Name="ckCloseApp" x:Uid="AutoClose" IsEnabled="{x:Bind ckAutoConn.IsChecked.Value, Mode=OneWay}" HorizontalAlignment="Left" Margin="187,0,0,0" VerticalAlignment="Top" IsChecked="{x:Bind local:Settings.Instance.AutoExit, Mode=TwoWay}"/>
-        </Grid>
-        <Button x:Name="btnStartStop" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,250,0,0" Click="BtnStartStop_Click" Content="Start" IsEnabled="False"/>
-        <TextBlock x:Name="txtStatus" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,300,0,0" Width="300"/>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="60"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock x:Uid="SSID"/>
+        <TextBox x:Name="txtSSID" Text="MyWiFiAP" Grid.Column="1" IsEnabled="False"/>
+        <TextBlock x:Uid="Password" Grid.Row="1" Grid.Column="0"/>
+        <PasswordBox x:Name="txtPass" Grid.Row="1" Grid.Column="1" PasswordChanged="TxtPass_PasswordChanged" IsEnabled="False"/>
+        <TextBlock x:Name="txtPassErr" Grid.Row="2" Grid.Column="1"/>
+        <TextBlock x:Uid="Via" Grid.Row="3" Grid.Column="0"/>
+        <TextBlock x:Name="txtWAN" Grid.Row="3" Grid.Column="1"/>
+        <CheckBox x:Name="ckAutoConn" x:Uid="AutoConn" Grid.Row="4" Grid.Column="1" IsChecked="{x:Bind local:Settings.Instance.AutoConn, Mode=TwoWay}"/>
+        <CheckBox x:Name="ckCloseApp" x:Uid="AutoClose" Grid.Row="5" Grid.Column="1" IsEnabled="{x:Bind ckAutoConn.IsChecked.Value, Mode=OneWay}" IsChecked="{x:Bind local:Settings.Instance.AutoExit, Mode=TwoWay}"/>
+        <ToggleSwitch x:Name="tgSwitch" Grid.Row="6" Grid.Column="1" IsEnabled="False" Toggled="TgSwitch_Toggled"/>
+        <!--        <TextBlock x:Name="txtStatus"/> -->
     </Grid>
 </Page>

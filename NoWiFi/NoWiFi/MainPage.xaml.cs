@@ -79,31 +79,34 @@ namespace NoWiFi
             switch (tetheringManager.TetheringOperationalState)
             {
                 case TetheringOperationalState.InTransition:
-                    txtStatus.Text = "Operation in progress...";
+//                    txtStatus.Text = "Operation in progress...";
                     break;
                 case TetheringOperationalState.Off:
                     ConfGui_Enable(true);
-                    txtStatus.Text = "Stopped!";
-                    btnStartStop.IsEnabled = true;
-                    btnStartStop.Content = "Start";
+//                    txtStatus.Text = "Stopped!";
+                    tgSwitch.IsEnabled = true;
+                    //                    btnStartStop.Content = "Start";
+                    tgSwitch.IsOn = false;
                     break;
                 case TetheringOperationalState.On:
                     ConfGui_Enable(false);
-                    txtStatus.Text = "Started!";
-                    btnStartStop.IsEnabled = true;
-                    btnStartStop.Content = "Stop";
+//                    txtStatus.Text = "Started!";
+                    tgSwitch.IsEnabled = true;
+                    //                    btnStartStop.Content = "Stop";
+                    tgSwitch.IsOn = true;
                     break;
                 case TetheringOperationalState.Unknown:
-                    txtStatus.Text = "Unknown operation state...";
+//                    txtStatus.Text = "Unknown operation state...";
                     break;
             }
         }
 
-        private async void BtnStartStop_Click(object sender, RoutedEventArgs e)
+        private async void TgSwitch_Toggled(object sender, RoutedEventArgs e)
         {
-            btnStartStop.IsEnabled = false;
+            tgSwitch.IsEnabled = false;
 
-            if (tetheringManager.TetheringOperationalState == TetheringOperationalState.Off)
+            if (tgSwitch.IsOn &&
+                (tetheringManager.TetheringOperationalState == TetheringOperationalState.Off))
             {
                 bool fNewConfig = false;
                 NetworkOperatorTetheringAccessPointConfiguration apConfig =
@@ -129,9 +132,10 @@ namespace NoWiFi
                 var result = await tetheringManager.StartTetheringAsync();
                 if (result.Status != TetheringOperationStatus.Success)
                 {
-                    txtStatus.Text = "Can't start!";
+//                    txtStatus.Text = "Can't start!";
                 }
-            } else if (tetheringManager.TetheringOperationalState == TetheringOperationalState.On)
+            } else if (!tgSwitch.IsOn &&
+                (tetheringManager.TetheringOperationalState == TetheringOperationalState.On))
             {
                 var result = await tetheringManager.StopTetheringAsync();
                 if (result.Status == TetheringOperationStatus.Success)
@@ -140,7 +144,7 @@ namespace NoWiFi
                 }
                 else
                 {
-                    txtStatus.Text = "Can't stop!";
+//                    txtStatus.Text = "Can't stop!";
                 }
             }
         }

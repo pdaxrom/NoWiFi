@@ -123,10 +123,4 @@
   <data name="SSID.Text" xml:space="preserve">
     <value>Имя сети</value>
   </data>
-  <data name="StartButton" xml:space="preserve">
-    <value>Вкл</value>
-  </data>
-  <data name="StopButton" xml:space="preserve">
-    <value>Выкл</value>
-  </data>
 </root>

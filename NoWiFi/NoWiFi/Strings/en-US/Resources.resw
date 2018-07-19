@@ -129,11 +129,14 @@
   <data name="SSID.Text" xml:space="preserve">
     <value>SSID</value>
   </data>
-  <data name="StartButton" xml:space="preserve">
-    <value>On</value>
+  <data name="tgSwitch.Header" xml:space="preserve">
+    <value>Access Point</value>
   </data>
-  <data name="StopButton" xml:space="preserve">
+  <data name="tgSwitch.OffContent" xml:space="preserve">
     <value>Off</value>
+  </data>
+  <data name="tgSwitch.OnContent" xml:space="preserve">
+    <value>On</value>
   </data>
   <data name="Via.Text" xml:space="preserve">
     <value>Via</value>
