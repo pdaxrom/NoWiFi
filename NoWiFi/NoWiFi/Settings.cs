@@ -18,11 +18,17 @@ namespace NoWiFi
             set => Save_Settings(nameof(AutoConn), value);
         }
 
+        public bool AutoExit
+        {
+            get => Read_Settings(nameof(AutoExit), false);
+            set => Save_Settings(nameof(AutoExit), value);
+        }
+
         private T Read_Settings<T>(string key, T defaultValue)
         {
-            if (ApplicationData.Current.LocalSettings.Values.ContainsKey("AutoConn"))
+            if (ApplicationData.Current.LocalSettings.Values.ContainsKey(key))
             {
-                return (T)ApplicationData.Current.LocalSettings.Values["AutoConn"];
+                return (T)ApplicationData.Current.LocalSettings.Values[key];
             }
             if (defaultValue != null)
             {

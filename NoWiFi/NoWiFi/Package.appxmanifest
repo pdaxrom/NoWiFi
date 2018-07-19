@@ -1,50 +1,29 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-
-<Package
-  xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
-  xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
-  xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
-  IgnorableNamespaces="uap mp">
-
-  <Identity
-    Name="76420f57-211c-436d-b486-442f4ff6cebb"
-    Publisher="CN=sash"
-    Version="1.0.0.0" />
-
-  <mp:PhoneIdentity PhoneProductId="76420f57-211c-436d-b486-442f4ff6cebb" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
-
+<Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
+  <Identity Name="65208pdaXrom.NoWiFi" Publisher="CN=3431BD85-5F22-4D52-B28F-9770271F53AC" Version="1.1.0.0" />
+  <mp:PhoneIdentity PhoneProductId="5ee319a8-1267-4a4b-af8b-efc57c07ee8c" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>NoWiFi</DisplayName>
-    <PublisherDisplayName>sash</PublisherDisplayName>
+    <PublisherDisplayName>pdaXrom</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
-
   <Dependencies>
     <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.0.0" MaxVersionTested="10.0.0.0" />
   </Dependencies>
-
   <Resources>
-    <Resource Language="x-generate"/>
+    <Resource Language="x-generate" />
   </Resources>
-
   <Applications>
-    <Application Id="App"
-      Executable="$targetnametoken$.exe"
-      EntryPoint="NoWiFi.App">
-      <uap:VisualElements
-        DisplayName="NoWiFi"
-        Square150x150Logo="Assets\Square150x150Logo.png"
-        Square44x44Logo="Assets\Square44x44Logo.png"
-        Description="NoWiFi"
-        BackgroundColor="transparent">
-        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"/>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="NoWiFi.App">
+      <uap:VisualElements DisplayName="NoWiFi" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="Control application for builtin Hot-Spot (WIFI Direct Access Point)." BackgroundColor="transparent">
+        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png">
+        </uap:DefaultTile>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
       </uap:VisualElements>
     </Application>
   </Applications>
-
   <Capabilities>
     <Capability Name="internetClient" />
-    <DeviceCapability Name="wiFiControl"/>
+    <DeviceCapability Name="wiFiControl" />
   </Capabilities>
 </Package>
