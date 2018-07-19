@@ -109,6 +109,9 @@ namespace NoWiFi
                 (tetheringManager.TetheringOperationalState == TetheringOperationalState.Off))
             {
                 bool fNewConfig = false;
+
+                ConfGui_Enable(false);
+
                 NetworkOperatorTetheringAccessPointConfiguration apConfig =
                 tetheringManager.GetCurrentAccessPointConfiguration();
 

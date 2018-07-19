@@ -16,16 +16,20 @@
             <RowDefinition Height="40"/>
             <RowDefinition Height="40"/>
             <RowDefinition Height="40"/>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="60"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <TextBlock x:Uid="SSID"/>
-        <TextBox x:Name="txtSSID" Text="MyWiFiAP" Grid.Column="1" IsEnabled="False"/>
+        <Border BorderThickness="2"  Grid.Column="1" >
+            <TextBox x:Name="txtSSID" Text="MyWiFiAP" IsEnabled="False"/>
+        </Border>
         <TextBlock x:Uid="Password" Grid.Row="1" Grid.Column="0"/>
-        <PasswordBox x:Name="txtPass" Grid.Row="1" Grid.Column="1" PasswordChanged="TxtPass_PasswordChanged" IsEnabled="False"/>
+        <Border BorderThickness="2" Grid.Row="1" Grid.Column="1">
+            <PasswordBox x:Name="txtPass" PasswordChanged="TxtPass_PasswordChanged" IsEnabled="False"/>
+        </Border>
         <TextBlock x:Name="txtPassErr" Grid.Row="2" Grid.Column="1"/>
         <TextBlock x:Uid="Via" Grid.Row="3" Grid.Column="0"/>
         <TextBlock x:Name="txtWAN" Grid.Row="3" Grid.Column="1"/>
