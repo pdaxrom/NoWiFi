@@ -22,12 +22,12 @@
             <TextBlock x:Name="txtPassErr" HorizontalAlignment="Center"/>
         </StackPanel>
         <Grid HorizontalAlignment="Center" Margin="0,166,0,0" VerticalAlignment="Top">
-            <TextBlock Text="Via" VerticalAlignment="Center"/>
+            <TextBlock x:Uid="Via" VerticalAlignment="Center"/>
             <TextBox x:Name="txtWAN" IsReadOnly="True" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250" Margin="60,0,0,0"/>
         </Grid>
         <Grid HorizontalAlignment="Center" Margin="0,200,0,0" VerticalAlignment="Top">
-            <CheckBox x:Name="ckAutoConn" Content="Auto connect" HorizontalAlignment="Left" Margin="62,0,0,0" VerticalAlignment="Top" IsChecked="{x:Bind local:Settings.Instance.AutoConn, Mode=TwoWay}"/>
-            <CheckBox x:Name="ckCloseApp" IsEnabled="{x:Bind ckAutoConn.IsChecked.Value, Mode=OneWay}" Content="Close app" HorizontalAlignment="Left" Margin="187,0,0,0" VerticalAlignment="Top" IsChecked="{x:Bind local:Settings.Instance.AutoExit, Mode=TwoWay}"/>
+            <CheckBox x:Name="ckAutoConn" x:Uid="AutoConn" HorizontalAlignment="Left" Margin="62,0,0,0" VerticalAlignment="Top" IsChecked="{x:Bind local:Settings.Instance.AutoConn, Mode=TwoWay}"/>
+            <CheckBox x:Name="ckCloseApp" x:Uid="AutoClose" IsEnabled="{x:Bind ckAutoConn.IsChecked.Value, Mode=OneWay}" HorizontalAlignment="Left" Margin="187,0,0,0" VerticalAlignment="Top" IsChecked="{x:Bind local:Settings.Instance.AutoExit, Mode=TwoWay}"/>
         </Grid>
         <Button x:Name="btnStartStop" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,250,0,0" Click="BtnStartStop_Click" Content="Start" IsEnabled="False"/>
         <TextBlock x:Name="txtStatus" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,300,0,0" Width="300"/>

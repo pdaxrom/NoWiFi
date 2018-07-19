@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AutoClose.Content" xml:space="preserve">
+    <value>Close after connect</value>
+  </data>
+  <data name="AutoConn.Content" xml:space="preserve">
+    <value>Connect on startup</value>
+  </data>
   <data name="Password.Text" xml:space="preserve">
     <value>Passwd</value>
   </data>
@@ -128,5 +134,8 @@
   </data>
   <data name="StopButton" xml:space="preserve">
     <value>Off</value>
+  </data>
+  <data name="Via.Text" xml:space="preserve">
+    <value>Via</value>
   </data>
 </root>
