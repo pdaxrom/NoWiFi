@@ -87,6 +87,7 @@ namespace NoWiFi
                     tgSwitch.IsEnabled = true;
                     //                    btnStartStop.Content = "Start";
                     tgSwitch.IsOn = false;
+                    lsClients.Items.Clear();
                     break;
                 case TetheringOperationalState.On:
                     ConfGui_Enable(false);
@@ -94,6 +95,12 @@ namespace NoWiFi
                     tgSwitch.IsEnabled = true;
                     //                    btnStartStop.Content = "Stop";
                     tgSwitch.IsOn = true;
+                    lsClients.Items.Clear();
+                    lsClients.Items.Add("Connected " + tetheringManager.ClientCount + "/" + tetheringManager.MaxClientCount);
+                    foreach (var currentClient in tetheringManager.GetTetheringClients())
+                    {
+                        lsClients.Items.Add(currentClient.MacAddress + " " + currentClient.HostNames[1] + " " + currentClient.HostNames[0]);
+                    }
                     break;
                 case TetheringOperationalState.Unknown:
 //                    txtStatus.Text = "Unknown operation state...";

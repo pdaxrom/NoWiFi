@@ -9,6 +9,11 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     Loaded="Page_Loaded">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
             <RowDefinition Height="40"/>
@@ -43,5 +48,10 @@
         <CheckBox x:Name="ckCloseApp" VerticalAlignment="Center" x:Uid="AutoClose" Grid.Row="5" Grid.Column="1" IsEnabled="{x:Bind ckAutoConn.IsChecked.Value, Mode=OneWay}" IsChecked="{x:Bind local:Settings.Instance.AutoExit, Mode=TwoWay}"/>
         <ToggleSwitch x:Name="tgSwitch" VerticalAlignment="Center" Grid.Row="6" Grid.Column="1" IsEnabled="False" Toggled="TgSwitch_Toggled"/>
         <!--        <TextBlock x:Name="txtStatus"/> -->
+    </Grid>
+        <ListBox x:Name="lsClients" Grid.Column="1"
+          ScrollViewer.HorizontalScrollMode="Enabled"
+          ScrollViewer.HorizontalScrollBarVisibility="Visible"
+          ScrollViewer.IsHorizontalRailEnabled="True"/>
     </Grid>
 </Page>
