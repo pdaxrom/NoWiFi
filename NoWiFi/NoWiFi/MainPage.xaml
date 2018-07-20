@@ -18,14 +18,15 @@
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="40"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="40"/>
-                <RowDefinition Height="40"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="70"/>
                 <ColumnDefinition MaxWidth="250"/>
             </Grid.ColumnDefinitions>
             <Border BorderThickness="2">
@@ -41,21 +42,21 @@
                 <PasswordBox x:Name="txtPass" VerticalAlignment="Center" PasswordChanged="TxtPass_PasswordChanged" IsEnabled="False"/>
             </Border>
             <TextBlock x:Name="txtPassErr" VerticalAlignment="Center" Grid.Row="2" Grid.Column="1"/>
-            <Border BorderThickness="2"  Grid.Row="3" Grid.Column="0">
+            <ToggleSwitch x:Name="tgSwitch" x:Uid="tgSwitch" VerticalAlignment="Center" Grid.Row="3" Grid.Column="1" IsEnabled="False" Toggled="TgSwitch_Toggled"/>
+            <Border BorderThickness="2"  Grid.Row="4" Grid.Column="0">
                 <TextBlock x:Uid="Via" VerticalAlignment="Center"/>
             </Border>
-            <TextBlock x:Name="txtWAN" VerticalAlignment="Center" Grid.Row="3" Grid.Column="1"/>
-            <CheckBox x:Name="ckAutoConn" VerticalAlignment="Center" x:Uid="AutoConn" Grid.Row="4" Grid.Column="1" IsChecked="{x:Bind local:Settings.Instance.AutoConn, Mode=TwoWay}"/>
-            <CheckBox x:Name="ckCloseApp" VerticalAlignment="Center" x:Uid="AutoClose" Grid.Row="5" Grid.Column="1" IsEnabled="{x:Bind ckAutoConn.IsChecked.Value, Mode=OneWay}" IsChecked="{x:Bind local:Settings.Instance.AutoExit, Mode=TwoWay}"/>
-            <CheckBox x:Name="ckStartUp" VerticalAlignment="Center" x:Uid="StartUp" Grid.Row="6" Grid.Column="1" Click="CkStartUp_Click" />
-            <ToggleSwitch x:Name="tgSwitch" VerticalAlignment="Center" Grid.Row="7" Grid.Column="1" IsEnabled="False" Toggled="TgSwitch_Toggled"/>
-            <!--        <TextBlock x:Name="txtStatus"/> -->
+            <TextBlock x:Name="txtWAN" VerticalAlignment="Center" Grid.Row="4" Grid.Column="1"/>
+            <CheckBox x:Name="ckAutoConn" VerticalAlignment="Center" x:Uid="AutoConn" Grid.Row="5" Grid.Column="1" IsChecked="{x:Bind local:Settings.Instance.AutoConn, Mode=TwoWay}"/>
+            <CheckBox x:Name="ckCloseApp" VerticalAlignment="Center" x:Uid="AutoClose" Grid.Row="6" Grid.Column="1" IsEnabled="{x:Bind ckAutoConn.IsChecked.Value, Mode=OneWay}" IsChecked="{x:Bind local:Settings.Instance.AutoExit, Mode=TwoWay}"/>
+            <CheckBox x:Name="ckStartUp" VerticalAlignment="Center" x:Uid="StartUp" Grid.Row="7" Grid.Column="1" Click="CkStartUp_Click" />
+            <TextBlock x:Name="txtStatus" VerticalAlignment="Center" Grid.Row="8" Grid.Column="1"/>
         </Grid>
         <Grid BorderThickness="10" Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="40"/>
                 <RowDefinition/>
-                <RowDefinition Height="40"/>
+                <RowDefinition Height="60"/>
             </Grid.RowDefinitions>
             <Grid BorderThickness="2">
                 <Grid.ColumnDefinitions>
@@ -74,7 +75,10 @@
                 ScrollViewer.VerticalScrollMode="Enabled"
                 ScrollViewer.VerticalScrollBarVisibility="Visible"
                 ScrollViewer.IsVerticalRailEnabled="True"/>
-            <HyperlinkButton BorderThickness="2" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right" Content="nowifi.pdaXrom.org" NavigateUri="http://nowifi.pdaXrom.org"/>
+            <StackPanel Grid.Row="2" BorderThickness="2">
+                <TextBlock x:Uid="About" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                <HyperlinkButton VerticalAlignment="Center" HorizontalAlignment="Right" Content="http://nowifi.pdaXrom.org" NavigateUri="http://nowifi.pdaXrom.org"/>
+            </StackPanel>
         </Grid>
     </Grid>
 </Page>

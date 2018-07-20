@@ -117,10 +117,55 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AutoClose.Content" xml:space="preserve">
+    <value>Закрыть после включения</value>
+  </data>
+  <data name="AutoConn.Content" xml:space="preserve">
+    <value>Включить после запуска</value>
+  </data>
   <data name="Password.Text" xml:space="preserve">
     <value>Пароль</value>
   </data>
   <data name="SSID.Text" xml:space="preserve">
     <value>Имя сети</value>
+  </data>
+  <data name="tgSwitch.Header" xml:space="preserve">
+    <value>Точка доступа</value>
+  </data>
+  <data name="tgSwitch.OffContent" xml:space="preserve">
+    <value>Выкл.</value>
+  </data>
+  <data name="tgSwitch.OnContent" xml:space="preserve">
+    <value>Вкл.</value>
+  </data>
+  <data name="Via.Text" xml:space="preserve">
+    <value>Через</value>
+  </data>
+  <data name="DisplayDescription" xml:space="preserve">
+    <value>Приложение для управления встроенным Hot-Spot (WIFI Direct точка доступа).</value>
+  </data>
+  <data name="DisplayName" xml:space="preserve">
+    <value>NoWiFi - управление точкой доступа</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>из</value>
+  </data>
+  <data name="MaxConnected.Text" xml:space="preserve">
+    <value>Подключено</value>
+  </data>
+  <data name="PasswdTooLong" xml:space="preserve">
+    <value>Слишком длинный пароль!</value>
+  </data>
+  <data name="PasswdTooShort" xml:space="preserve">
+    <value>Слишком короткий пароль!</value>
+  </data>
+  <data name="StartUp.Content" xml:space="preserve">
+    <value>Автозапуск приложения</value>
+  </data>
+  <data name="About.Text" xml:space="preserve">
+    <value>О NoWiFi приложении</value>
+  </data>
+  <data name="Default" xml:space="preserve">
+    <value>По умолчанию</value>
   </data>
 </root>

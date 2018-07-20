@@ -184,7 +184,14 @@ namespace NoWiFi
         private bool SetupTethering()
         {
             conProfile = NetworkInformation.GetInternetConnectionProfile();
-            txtWAN.Text = conProfile.ProfileName;
+            if (conProfile.ProfileName == "WFD_GROUP_OWNER_PROFILE")
+            {
+                txtWAN.Text = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView().GetString("Default");
+            }
+            else
+            {
+                txtWAN.Text = conProfile.ProfileName;
+            }
             tetheringManager = NetworkOperatorTetheringManager.CreateFromConnectionProfile(conProfile);
             NetworkOperatorTetheringAccessPointConfiguration apConfig = 
                 tetheringManager.GetCurrentAccessPointConfiguration();
@@ -223,7 +230,6 @@ namespace NoWiFi
                 if (task.State == StartupTaskState.Disabled)
                 {
                     var state = await task.RequestEnableAsync();
-                    txtPassErr.Text = state.ToString();
                 }
             }
             else
