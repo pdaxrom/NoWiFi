@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AutoClose.Content" xml:space="preserve">
-    <value>Close after connect</value>
+    <value>Close App after connect</value>
   </data>
   <data name="AutoConn.Content" xml:space="preserve">
-    <value>Connect on startup</value>
+    <value>Connect on App startup</value>
   </data>
   <data name="Password.Text" xml:space="preserve">
     <value>Passwd</value>
@@ -140,5 +140,23 @@
   </data>
   <data name="Via.Text" xml:space="preserve">
     <value>Via</value>
+  </data>
+  <data name="DisplayDescription" xml:space="preserve">
+    <value>Control application for builtin Hot-Spot (WIFI Direct Access Point).</value>
+  </data>
+  <data name="DisplayName" xml:space="preserve">
+    <value>NoWiFi - Access Point control utility</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>from</value>
+  </data>
+  <data name="MaxConnected.Text" xml:space="preserve">
+    <value>Connected </value>
+  </data>
+  <data name="PasswdTooLong" xml:space="preserve">
+    <value>Password too long!</value>
+  </data>
+  <data name="PasswdTooShort" xml:space="preserve">
+    <value>Password too short!</value>
   </data>
 </root>

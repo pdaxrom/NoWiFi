@@ -96,7 +96,9 @@ namespace NoWiFi
                     //                    btnStartStop.Content = "Stop";
                     tgSwitch.IsOn = true;
                     lsClients.Items.Clear();
-                    lsClients.Items.Add("Connected " + tetheringManager.ClientCount + "/" + tetheringManager.MaxClientCount);
+                    txtNumConnected.Text = tetheringManager.ClientCount + " " +
+                        Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView().GetString("From") + " " +
+                        tetheringManager.MaxClientCount;
                     foreach (var currentClient in tetheringManager.GetTetheringClients())
                     {
                         lsClients.Items.Add(currentClient.MacAddress + " " + currentClient.HostNames[1] + " " + currentClient.HostNames[0]);
@@ -163,11 +165,11 @@ namespace NoWiFi
         {
             if (txtPass.Password.Length < MIN_WPA2_PASSWORD_LENGTH)
             {
-                txtPassErr.Text = "Password too short!";
+                txtPassErr.Text = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView().GetString("PasswdTooShort");
             }
             else if (txtPass.Password.Length > MAX_WPA2_PASSWORD_LENGTH)
             {
-                txtPassErr.Text = "Password too long!";
+                txtPassErr.Text = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView().GetString("PasswdTooLong");
             }
             else
             {
