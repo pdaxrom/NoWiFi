@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AutoClose.Content" xml:space="preserve">
-    <value>Close App after connect</value>
+    <value>Close App after activation</value>
   </data>
   <data name="AutoConn.Content" xml:space="preserve">
-    <value>Connect on App startup</value>
+    <value>Activate on App startup</value>
   </data>
   <data name="Password.Text" xml:space="preserve">
     <value>Passwd</value>
@@ -158,5 +158,8 @@
   </data>
   <data name="PasswdTooShort" xml:space="preserve">
     <value>Password too short!</value>
+  </data>
+  <data name="StartUp.Content" xml:space="preserve">
+    <value>Start App on login</value>
   </data>
 </root>

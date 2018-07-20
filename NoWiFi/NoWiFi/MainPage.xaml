@@ -21,7 +21,8 @@
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="40"/>
-                <RowDefinition Height="100"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="60"/>
@@ -46,7 +47,8 @@
             <TextBlock x:Name="txtWAN" VerticalAlignment="Center" Grid.Row="3" Grid.Column="1"/>
             <CheckBox x:Name="ckAutoConn" VerticalAlignment="Center" x:Uid="AutoConn" Grid.Row="4" Grid.Column="1" IsChecked="{x:Bind local:Settings.Instance.AutoConn, Mode=TwoWay}"/>
             <CheckBox x:Name="ckCloseApp" VerticalAlignment="Center" x:Uid="AutoClose" Grid.Row="5" Grid.Column="1" IsEnabled="{x:Bind ckAutoConn.IsChecked.Value, Mode=OneWay}" IsChecked="{x:Bind local:Settings.Instance.AutoExit, Mode=TwoWay}"/>
-            <ToggleSwitch x:Name="tgSwitch" VerticalAlignment="Center" Grid.Row="6" Grid.Column="1" IsEnabled="False" Toggled="TgSwitch_Toggled"/>
+            <CheckBox x:Name="ckStartUp" VerticalAlignment="Center" x:Uid="StartUp" Grid.Row="6" Grid.Column="1" Click="CkStartUp_Click" />
+            <ToggleSwitch x:Name="tgSwitch" VerticalAlignment="Center" Grid.Row="7" Grid.Column="1" IsEnabled="False" Toggled="TgSwitch_Toggled"/>
             <!--        <TextBlock x:Name="txtStatus"/> -->
         </Grid>
         <Grid BorderThickness="10" Grid.Column="1">

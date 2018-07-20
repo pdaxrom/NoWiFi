@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
+using Windows.ApplicationModel;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Networking.Connectivity;
@@ -39,7 +41,9 @@ namespace NoWiFi
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            Setup_Tethering();
+            await SetupStartupTask();
+
+            SetupTethering();
 
             _timer = new DispatcherTimer
             {
@@ -152,7 +156,7 @@ namespace NoWiFi
                 var result = await tetheringManager.StopTetheringAsync();
                 if (result.Status == TetheringOperationStatus.Success)
                 {
-                    Setup_Tethering();
+                    SetupTethering();
                 }
                 else
                 {
@@ -177,7 +181,7 @@ namespace NoWiFi
             }
         }
 
-        private bool Setup_Tethering()
+        private bool SetupTethering()
         {
             conProfile = NetworkInformation.GetInternetConnectionProfile();
             txtWAN.Text = conProfile.ProfileName;
@@ -187,6 +191,50 @@ namespace NoWiFi
             txtSSID.Text = apConfig.Ssid;
             txtPass.Password = apConfig.Passphrase;
             return true;
+        }
+
+        public async Task<StartupTask> SetupStartupTask()
+        {
+            var task = await StartupTask.GetAsync("{ee32b2ab-a6d4-4277-aa0c-f171016bef26}");
+//            txtStatus.Text = state.State.ToString();
+            switch(task.State)
+            {
+                case StartupTaskState.Disabled:
+                    ckStartUp.IsChecked = false;
+                    ckStartUp.IsEnabled = true;
+                    break;
+                case StartupTaskState.Enabled:
+                    ckStartUp.IsChecked = true;
+                    ckStartUp.IsEnabled = true;
+                    break;
+                default:
+                    ckStartUp.IsEnabled = false;
+                    break;
+            }
+            return task;
+        }
+
+        private async void CkStartUp_Click(object sender, RoutedEventArgs e)
+        {
+            var task = await StartupTask.GetAsync("{ee32b2ab-a6d4-4277-aa0c-f171016bef26}");
+
+            if (ckStartUp.IsChecked.Value)
+            {
+                if (task.State == StartupTaskState.Disabled)
+                {
+                    var state = await task.RequestEnableAsync();
+                    txtPassErr.Text = state.ToString();
+                }
+            }
+            else
+            {
+                if (task.State == StartupTaskState.Enabled)
+                {
+                    task.Disable();
+                }
+            }
+
+            await SetupStartupTask();
         }
     }
 }
