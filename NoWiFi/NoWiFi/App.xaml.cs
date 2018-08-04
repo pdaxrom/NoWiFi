@@ -96,5 +96,24 @@ namespace NoWiFi
             //TODO: Сохранить состояние приложения и остановить все фоновые операции
             deferral.Complete();
         }
+
+        protected override void OnActivated(IActivatedEventArgs args)
+        {
+            Frame rootFrame = Window.Current.Content as Frame;
+
+            if (rootFrame == null)
+            {
+                rootFrame = new Frame();
+                Window.Current.Content = rootFrame;
+            }
+
+            if (args.Kind == ActivationKind.StartupTask)
+            {
+                var startupArgs = args as StartupTaskActivatedEventArgs;
+            }
+
+            rootFrame.Navigate(typeof(MainPage), args.Kind);
+            Window.Current.Activate();
+        }
     }
 }

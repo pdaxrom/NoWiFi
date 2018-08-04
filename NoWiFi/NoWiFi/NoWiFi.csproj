@@ -20,7 +20,7 @@
     <PackageCertificateKeyFile>NoWiFi_StoreKey.pfx</PackageCertificateKeyFile>
     <PackageCertificateThumbprint>2DD414A5C69A81BA0FF0172FBFF391C8B6EE945C</PackageCertificateThumbprint>
     <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
-    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
     <AppxSymbolPackageEnabled>False</AppxSymbolPackageEnabled>
     <AppxBundle>Always</AppxBundle>
     <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
