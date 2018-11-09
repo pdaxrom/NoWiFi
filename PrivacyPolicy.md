@@ -2,20 +2,21 @@
 
 ### What information do we collect?
 
-We don't collect any information
+We do not collect any information.
 
 ### What do we use your information for? 
 
-We don't collect any information
+We do not collect any information.
 
 ### How do we protect your information? 
 
-We don't collect any information
+We do not collect any information.
 
-Microsoft can uses techniques to analyze and track apps from the Windows Store
+Microsoft Store can tracking applicaton with their rules
 [https://msdn.microsoft.com/en-us/library/windows/apps/dn764944.aspx]
 
 ### Date of Privacy Policy 
 
-If we decide to change our privacy policy, we will post those changes on this page. 
-This policy was last modified on 2018-11-09
+Any changes in this policy we will post on this page.
+
+This policy was last modified on 2018-11-09.
