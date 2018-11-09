@@ -13,7 +13,7 @@ We do not collect any information.
 We do not collect any information.
 
 Microsoft Store can tracking applicaton with their rules
-[https://msdn.microsoft.com/en-us/library/windows/apps/dn764944.aspx]
+[Microsoft Store Policies](https://msdn.microsoft.com/en-us/library/windows/apps/dn764944.aspx)
 
 ### Date of Privacy Policy 
 
