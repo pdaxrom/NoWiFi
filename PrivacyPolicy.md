@@ -19,4 +19,4 @@ Microsoft Store can tracking applicaton with their rules
 
 Any changes in this policy we will post on this page.
 
-This policy was last modified on 2018-11-09.
+Privacy Policy last modified: 2018-11-09.
